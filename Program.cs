@@ -13,11 +13,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowViteDevClient", policy =>
+    options.AddPolicy("frontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy.WithOrigins(builder.Configuration.GetValue<string>("FrontendUrl")
+            ?? Environment.GetEnvironmentVariable("FRONTEND_URL")!)
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     });
 });
 
@@ -35,7 +36,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors("AllowViteDevClient");
+app.UseCors("frontend");
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
