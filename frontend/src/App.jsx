@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 
-const API_BASE_URL = "http://localhost:5069/api/tasks";
+const API_BASE_URL = import.meta.env.API_BASE_URL;
 
 function App() {
   const [tasks, setTasks] = useState([]);
