@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 
-const API_BASE_URL = import.meta.env.API_BASE_URL;
+const API_BASE_URL = "https://task-tracker-dbh2bvg8bch3ahbp.centralus-01.azurewebsites.net/api/tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);

@@ -3,7 +3,6 @@ using DotNetEnv;
 using TaskTracker.Api;
 
 Env.Load();
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
